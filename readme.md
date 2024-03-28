@@ -1,7 +1,5 @@
 # ATM CLI
 
 ## Run
-
-```
-npx awesome-atm-cli
+@neha.dev/awesome-atm-cli
 ```
