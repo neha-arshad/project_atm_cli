@@ -1,6 +1,6 @@
 {
   "name": "@neha.dev/awesome-atm-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MY ATM",
   "main": "app.js",
   "type": "module",
