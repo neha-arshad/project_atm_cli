@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#! /usr/bin/env node
 
 import inquirer from "inquirer"
 import chalk from "chalk"
@@ -8,67 +8,67 @@ let myBalance = 10000; // 💸
 console.log(chalk.magentaBright.bold(`your current balance is ${myBalance} 💸`));
 let mypinCode = 9876;
 
-async function atm_func(){
-let pinCode = await inquirer.prompt([
-	{
-		type: "number",
-		message: "enter your pin code",
-		name: "mypin"
-	}
-])
-if (pinCode.mypin === mypinCode) {
-	console.log(chalk.redBright("Correct pin code."))
-
-	// Select options//
-	let SelectOptions = await inquirer.prompt([
+async function atm_func() {
+	let pinCode = await inquirer.prompt([
 		{
-			type: "list",
-			message: "select one option",
-			name: "options",
-			choices: ["withdraw", "check balance", "fast cash"]
+			type: "number",
+			message: "enter your pin code",
+			name: "mypin"
 		}
-	]);
-	//WITHDRAW//
-	if (SelectOptions.options === "withdraw") {
-		let myAmount = await inquirer.prompt([
+	])
+	if (pinCode.mypin === mypinCode) {
+		console.log(chalk.redBright("Correct pin code."))
+
+		// Select options//
+		let SelectOptions = await inquirer.prompt([
 			{
-				type: "number",
-				message: "enter your amount",
-				name: "amount"
+				type: "list",
+				message: "select one option",
+				name: "options",
+				choices: ["withdraw", "check balance", "fast cash"]
 			}
 		]);
-		if (myAmount.amount < myBalance && myAmount.amount > 0) {
-			console.log(chalk.blue(`\nWithdraw $${myAmount.amount}💸 from your account.`));
-			console.log(chalk.magenta(`\nYour Current Balance is: $${myBalance - myAmount.amount}💸`));
-		}
-		 else {
-			console.log(chalk.red.bold(`\n⚠️ Insufficient balance or Invalid Amount.`));
-		}
-	}
-	//CHECK BALANCE//
-	else if (SelectOptions.options === "check balance") {
-		console.log(chalk.magentaBright.bold(`yor current balance is ${myBalance}💸`))
-	}
-	//FAST CASH//
-	if (SelectOptions.options === "fast cash") {
-		let myAmount = await inquirer.prompt(
-			[
+		//WITHDRAW//
+		if (SelectOptions.options === "withdraw") {
+			let myAmount = await inquirer.prompt([
 				{
-					type: "list",
+					type: "number",
 					message: "enter your amount",
-					name: "amount",
-					choices: ["2000", "5000", "10000"]
+					name: "amount"
 				}
-			]
-		);
-		myBalance -= myAmount.amount
-		console.log(chalk.magentaBright.bold(` your remaining balance is ${myBalance} 💸`))
+			]);
+			if (myAmount.amount < myBalance && myAmount.amount > 0) {
+				console.log(chalk.blue(`\nWithdraw $${myAmount.amount}💸 from your account.`));
+				console.log(chalk.magenta(`\nYour Current Balance is: $${myBalance - myAmount.amount}💸`));
+			}
+			else {
+				console.log(chalk.red.bold(`\n⚠️ Insufficient balance or Invalid Amount.`));
+			}
+		}
+		//CHECK BALANCE//
+		else if (SelectOptions.options === "check balance") {
+			console.log(chalk.magentaBright.bold(`yor current balance is ${myBalance}💸`))
+		}
+		//FAST CASH//
+		if (SelectOptions.options === "fast cash") {
+			let myAmount = await inquirer.prompt(
+				[
+					{
+						type: "list",
+						message: "enter your amount",
+						name: "amount",
+						choices: ["2000", "5000", "10000"]
+					}
+				]
+			);
+			myBalance -= myAmount.amount
+			console.log(chalk.magentaBright.bold(` your remaining balance is ${myBalance} 💸`))
+		}
+
 	}
 
-}
-
-else {
-	console.log(chalk.redBright("enter your correct pin code."))
-};
+	else {
+		console.log(chalk.redBright("enter your correct pin code."))
+	};
 }
 atm_func();
