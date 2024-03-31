@@ -13,7 +13,8 @@ async function atm_func() {
 		{
 			type: "number",
 			message: "enter your pin code",
-			name: "mypin"
+			name: "mypin",
+			default: "9876"
 		}
 	])
 	if (pinCode.mypin === mypinCode) {
