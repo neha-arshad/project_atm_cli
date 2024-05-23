@@ -5,7 +5,7 @@ A todo list CLI with basic operators.
 ## Run the  cli ATM 
 
 ```
-@neha.dev/awesome-atm-cli
+npx "@neha.dev/awesome-atm-cli@latest"
 
 ```
 
